@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "downlevelIteration": true,
+        "baseUrl": ".",
+        "moduleResolution": "node",
+        "jsx": "react",
+        "lib": ["es2018", "dom"],
+        "module": "commonjs",
+        "target": "esnext",
+        "declaration": true,
+        "outDir": "lib"
+    },
+    "include": [ "./src/**/*" ],
+    "exclude":[ "node_modules", "pages" ]
+  }

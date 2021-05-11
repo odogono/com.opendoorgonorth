@@ -1,0 +1,48 @@
+---
+status: active
+isRenderable: false
+comment: Front Page Layout
+---
+
+import '../styles/main';
+
+import { e } from '@site';
+import Menu from '/components/menu';
+
+<html lang="en">
+<head>
+  <meta charSet="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+
+  <title>{e.Title?.title}</title>
+
+  <CSSLinks />
+
+  <meta name="description" content="Page description" />
+  <meta property="og:title" content={e.Title?.title} />
+  <meta property="og:description" content="Page description" />
+  <meta property="og:image" content="https://www.mywebsite.com/image.jpg" />
+  <meta property="og:image:alt" content="Image description" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:url" content="https://www.mywebsite.com/page" />
+  <link rel="canonical" href="https://www.mywebsite.com/page" />
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/my.webmanifest" />
+  <meta name="theme-color" content="#FF00FF" />
+</head>
+
+<body>
+  <div id="layout-primary">
+            <Menu />
+            <div className="header"># Open Door Go North</div>
+            <div className="content">
+                {children}
+            </div>
+        </div>
+</body>
+</html>

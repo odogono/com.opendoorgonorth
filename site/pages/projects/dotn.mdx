@@ -1,0 +1,47 @@
+---
+title: Death On The Nile
+summary:  A text based MUD game, based on the Agatha Christie Licence
+date: ['1998', '1999']
+tags: [ "project" ]
+---
+import { e } from '@site';
+import Heading from '../../components/heading';
+
+<Heading e={e} />
+
+
+**Client:** Big Toe Productions Ltd, London, UK
+
+![Death On The Nile](file:///media/dotn.jpg)
+
+## What / Who / Goals
+
+An online text-based adventure game, or [MUD](https://en.wikipedia.org/wiki/MUD), based on the 
+Agatha Christie book, whose target audience was primarily mid-american housewives. The aim of the 
+game was to inhabit various exclusive clubs and tea rooms, occasionally *j’accuse*, develop social 
+bonds, and generally carry on in a way befitting of a member of the 1930s social elite. In some 
+ways, it was a text only [Among Us](https://en.wikipedia.org/wiki/Among_Us).
+
+## My Role
+
+I wrote the natural language parser, responsible for translating plain English into commands that 
+would manipulate the games object database. 
+For example, ’Take the smoking gun and place it underneath the bed’.
+[Richard Bartle](https://mud.co.uk) acted as a consultant on the project, and he would occasionally 
+attempt to sell me on the benefits of Prolog.
+
+Later in the project, I worked with the designer on the system of procedurally generating murders.
+
+## Tech Stack
+
+Despite the complexity of the engine itself, the technology was very straightforward. 
+It was Java as far as the eye could see, from the server, to the client (An Applet). 
+Even the database was embedded Java. Simpler times.
+
+## What I learnt
+
+This was my first role in a project not directly involved with the web, so *a lot* is a good summary. 
+My Java at this point was rudimentary, but regular code reviews steadily improved it. 
+This was also my first encounter with Version Control, CVS, and the sometimes physical 
+dangers (from my colleagues) of messing up a commit.
+

@@ -1,0 +1,94 @@
+---
+title: EcSet
+summary: entity component system
+date: '2019-02-06'
+tags: [ "project", "ecset" ]
+---
+import { e } from '@site';
+import Heading from '../../components/heading';
+
+<Heading e={e} />
+
+
+Ecset is my own implementation of the 
+[Entity Component System](https://github.com/SanderMertens/ecs-faq#what-is-ecs) 
+design pattern.
+
+It was originally extracted from a game I was developing at the time, and evolved into a 
+standalone library which I have continued to work and experiment with over several years.
+
+The primary implementation has been javascript, or more recently Typescript. An Elixir 
+implementation is lagging behind.
+
+Ecset has been used in production on some of my past projects, and is currently employed 
+heavily in my Static Site Generator Grosmont.
+
+Like most ECS implementations, it works on basic principles:
+
+- Entities are nothing more that IDs, or in this case, 53bit integers
+- Components are schema defined datatypes containing properties
+- Entities contain zero or more components
+- Entities can add or remove components dynamically
+- It has processors (Systems) which are functions that work on sets of entities with a 
+specified component signature.
+
+With Ecset, I have focussed on the concept of an Entity Set. This is a data structure of 
+Entities that can be queried and is typically backed by a persistent data store.
+
+Example Entity Set implementations include ones backed by Sqlite, IndexedDb, LevelDb, 
+Redis, and just plain old in-memory. The data structures lend themselves particularly well 
+to relational databases, so the Sqlite variant has been used the most.
+
+
+An important aspect of ECS is the ability to match entities with Processors. As an example, 
+a processor which updates entities in a coordinate space would be interested in Position 
+and Velocity components only. 
+
+Initially, I began with using bitfields to match entities, wrapped around a simple DSL:
+
+```
+Q.all('/component/channel_member')
+```
+
+Over time, this expanded to include selection based on component properties
+
+```
+Q.all('/component/channel_member').where(Q.attr('client').equals(clientID))
+```
+
+
+Until eventually, as these things tend to do, it evolved into a language based on Forth 
+that I named Filth:
+
+```
+$es [
+  /component/channel_member#/channel !ca $channel_ids ==
+  /component/channel_member !bf
+  @c
+] select
+
+// select client attr, and make sure there are no duplicates
+/client pluck unique 
+                
+// make sure this list of clients doesnt include the client_id
+[ $client_id != ] filter
+```
+
+This allows a lot of flexibility in creating queries that can capture the components 
+needed for processing. In some ways this makes Ecset comparable to GraphQL. A goal was 
+to allow clients, say a browser, to fetch data from a server in a concise language independent manner.
+
+ECS has typically been employed in domains such as games, where factors such as cache 
+locality and low level optimisation are important. My aim with this project has been to 
+explore how such a pattern can be employed in other scenarios.
+
+
+
+
+
+
+At certain times, development on EcSet has been very ‘bottom up’. Adding features can 
+be very compulsive without a clear requirement. I have probably removed more code than 
+now exists. What is saving this project is working on projects which utilise it. My rule 
+of thumb with an API is that there should be at least 3 working implementations, preferably 
+different enough to stress it in the required ways.

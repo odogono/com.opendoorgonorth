@@ -1,0 +1,56 @@
+---
+title: ES6 Modules aren't just syntax sugar
+summary:  "let’s dive into how ES6 modules are different"
+date: '2017-04-18'
+tags: [ "project" ]
+---
+import { e } from '@site';
+import Heading from '../../components/heading';
+
+<Heading e={e} />
+
+But to the point, let’s dive into how ES6 modules are different.
+
+## Defining bindings and scopes
+
+__What’s a binding?__
+
+```javascript
+var a = 1;
+```
+
+Has three parts:
+
+1. a, an Identifier. Identifiers are names that can be assigned to values in JavaScript.
+2. 2, avalue` - in this case, a NumericLiteral.
+3. var a = 2, a binding of the value 2 to the name a, with the var type, which means that a can be reassigned and has function scope. It could also be a let or const binding. The binding is what allows us to refer to the value 2, or whatever the value of a is, by writing a, instead of writing the literal value.
+
+
+the `dst` is not set
+
+---
+
+
+```css
+@font-face {
+    font-family: 'charterbold_italic';
+    src: url('charter_bold_italic-webfont.eot') format('embedded-opentype'),
+         url('charter_bold_italic-webfont.woff') format('woff');
+    font-weight: normal; font-style: normal;
+}
+```
+
+```filth
+$es [
+  /component/channel_member#/channel !ca $channel_ids ==
+  /component/channel_member !bf
+  @c
+] select
+
+// select client attr, and make sure there are no duplicates
+/client pluck unique 
+                
+// make sure this list of clients doesnt include the client_id
+[ $client_id != ] filter
+```
+

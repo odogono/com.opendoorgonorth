@@ -1,0 +1,50 @@
+---
+title: Grosmont
+summary:  A static site generator built on an Entity Component System.
+date: ['2021-01-01']
+tags: [ "project" ]
+---
+import { e } from '@site';
+import Heading from '../../components/heading';
+
+<Heading e={e} />
+
+
+Static site generators are currently the in-thing amongst the hackerati. The principle 
+is being that you generate plain, largely javascript-free, web pages using some kind of 
+build process ready to be placed directly on a web server.
+Aside from wanting to be trendy, and badly needing a site where I could bare my soul to 
+the world, I wanted to further stress and develop my library EcSet. So discarding the 
+quick and easy option of using one of the many fine pre-existing generators, I began 
+work on my own.
+
+To summarise what EcSet actually does; it is an Entity Component framework - it provides 
+a way of structuring, storing, and operating on data. Entities are collections of Components. 
+Components are where the data lives. Processors perform operations on Entities and their 
+Components.
+
+In practice, this has resulted in a very modular, clean solution, that forced me to think 
+clearly about how the data is structured. The processors are largely atomic in their operation - they work on defined sets of entities, which means they can be added, removed, and changed without breaking the system as a whole. The order in which they called is still important however, so there is still some dependency. This is something I am particularly pleased with, and has justified the upfront design.
+
+In terms of what it can build, the main input type is MDX. This format can largely be 
+thought of as Markdown, but with the ability to use JSX. Its a good trade mix of minimal 
+text only markup which lets you focus on the content, with the extra power of being able 
+to include React components as needed.
+The SSG can of course also cope with plain JSX, which is either imported as a component 
+into other MDX or JSX, or as a standalone file to be rendered into a page.
+
+Stylesheet files with the `.sass` extension are compiled into css. From there, they can 
+either be written to a destination, or imported and then written out as part of MDX/JSX 
+files.
+
+Other formats, such as images or html, are treated as static files, and they are written 
+as is to the destination.
+
+The system supports incremental builds based on file timestamps. It also uses dependencies 
+to determine which files need to be processed. For example, changing a stylesheet causes 
+all the files that import that file to also be included in the build.
+
+The generator is invoked from the command line, taking a configuration file as an argument. 
+It can also be run as a server, which is useful during development and also adds some debug 
+information.
+
