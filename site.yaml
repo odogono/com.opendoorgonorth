@@ -5,7 +5,7 @@
   uuid: ED07584D-7070-4C04-A90B-1F79AAFBC26F
 
 /component/src:
-  url: file:///pages/
+  url: file:///site/
 
 /component/dst:
   url: file:///dist/

@@ -2,3 +2,5 @@ node_modules/
 .DS_Store
 .cache/
 yarn.lock
+dist
+odgn.sqlite
