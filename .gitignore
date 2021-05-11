@@ -4,3 +4,5 @@ node_modules/
 yarn.lock
 dist
 odgn.sqlite
+*.sqlite-wal
+*.sqlite-shm

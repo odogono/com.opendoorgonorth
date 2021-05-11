@@ -17,7 +17,7 @@ export default () => {
         [
             $eids
             /component/date_range#/date_start !ca desc order
-            10 0 limit
+            12 0 limit
             [/component/mdx] !bf
             @eid
         ] select`;
