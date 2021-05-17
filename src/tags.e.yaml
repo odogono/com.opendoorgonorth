@@ -1,0 +1,8 @@
+- /component/tag#/slug!: odgn-blog
+  title: Blog
+
+- /component/tag#/slug!: odgn-link
+  title: Link
+
+- /component/tag#/slug!: odgn-project
+  title: Project

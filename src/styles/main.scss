@@ -11,7 +11,7 @@
     --link-bg      : rgba(170, 202, 251, 0.5);
     --link-bg-hover: rgba(170, 202, 251, 0.9);
     --code-font    : Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    --hr-color: #555;
+    --hr-color     : #555;
 }
 
 [data-theme="dark"] {
@@ -51,11 +51,7 @@ $col-2   : #AB4D45;
 }
 
 
-body {
-    font            : 1.0rem "Fira Sans", sans-serif;
-    background-color: var(--bg);
-    color           : var(--text-color);
-}
+
 
 hr {
     height          : 1px;
@@ -78,26 +74,86 @@ hr {
     font-family   : var(--code-font);
 }
 
-#layout-primary {
-    display: grid;
+.odgn-header {
+    display       : flex;
+    flex-direction: row;
 
-    justify-content: center;
-    align-content  : end;
-    margin-bottom  : 5em;
-
-    grid-template-rows   : 6rem auto;
-    grid-template-columns: 0.1fr 640px;
-    grid-template-areas  :
-        ". header"
-        "menu content";
-
-    .menu {
-        grid-area: menu;
+    h1 {
+        font-size  : 24px;
+        font-weight: 400;
     }
 
-    .content {
-        grid-area   : content;
-        padding-left: 20px;
+    * {
+        margin-right: 6px;
+    }
+}
+
+.site-nav,
+menu {
+    li {
+        display: inline;
+    }
+}
+
+body {
+    font            : 1.0rem "Fira Sans", sans-serif;
+    background-color: var(--bg);
+    color           : var(--text-color);
+
+    display: grid;
+
+    justify-content   : start;
+    // align-items       : center;
+    margin     : 1rem;
+
+
+    grid-template-rows   : 8rem auto;
+    grid-template-columns: 1fr;
+    grid-template-areas  :
+        "header"
+        "content"
+        "footer";
+
+    @media only screen and (min-width: 801px) {
+        justify-content   : center;
+        align-items       : center;
+        grid-template-columns: 0.25fr 0.5fr 0.25fr;
+        grid-template-areas  :
+            "header header header"
+            "... content ..."
+            "footer footer footer";
+    }
+
+    header {
+        grid-area: header;
+        display  : flex;
+
+        flex-direction: column;
+        align-items   : flex-start;
+        justify-content: space-around;
+
+
+        @media only screen and (min-width: 801px) {
+            flex-direction : row;
+            align-items    : center;
+            justify-content: space-around;
+        }
+    }
+
+
+
+    .site-nav {
+        grid-area: header;
+    }
+
+    footer {
+        grid-area: footer;
+    }
+
+    main {
+        grid-area      : content;
+        justify-content: center;
+
 
         h1 {
             margin-bottom: 0.8em;
@@ -160,17 +216,7 @@ hr {
         }
     }
 
-    .header {
-        grid-area  : header;
-        display    : flex;
-        align-items: center;
-    }
 
-    h1 {
-        font-weight: 600;
-        font-size  : 2rem;
-
-    }
 }
 
 

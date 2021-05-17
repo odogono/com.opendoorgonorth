@@ -1,13 +1,9 @@
 ---
 title: Grosmont
 summary:  A static site generator built on an Entity Component System.
-date: ['2021-01-01']
-tags: [ "project" ]
+date: ['2021-01-01', '9999']
+tags: [ 'node.js', 'ecset' ]
 ---
-import { e } from '@site';
-import Heading from '../../components/heading';
-
-<Heading e={e} />
 
 
 Static site generators are currently the in-thing amongst the hackerati. The principle 
@@ -24,7 +20,11 @@ Components are where the data lives. Processors perform operations on Entities a
 Components.
 
 In practice, this has resulted in a very modular, clean solution, that forced me to think 
-clearly about how the data is structured. The processors are largely atomic in their operation - they work on defined sets of entities, which means they can be added, removed, and changed without breaking the system as a whole. The order in which they called is still important however, so there is still some dependency. This is something I am particularly pleased with, and has justified the upfront design.
+clearly about how the data is structured. The processors are largely atomic in their operation - 
+they work on defined sets of entities, which means they can be added, removed, and changed 
+without breaking the system as a whole. The order in which they called is still important 
+however, so there is still some dependency. This is something I am particularly pleased with, a
+nd has justified the upfront design.
 
 In terms of what it can build, the main input type is MDX. This format can largely be 
 thought of as Markdown, but with the ability to use JSX. Its a good trade mix of minimal 

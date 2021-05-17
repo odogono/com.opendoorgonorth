@@ -6,3 +6,4 @@ dist
 odgn.sqlite
 *.sqlite-wal
 *.sqlite-shm
+.vscode/settings.json

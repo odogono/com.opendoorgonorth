@@ -1,0 +1,3 @@
+# provide a dst for the robots.txt file
+- /component/src#/url!: file:///robots.txt
+  dst: robots.txt

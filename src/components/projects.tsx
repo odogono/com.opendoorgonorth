@@ -16,8 +16,8 @@ export default () => {
         const q = `
         [
             $eids
-            /component/date_range#/date_start !ca desc order
-            12 0 limit
+            /component/date_range#/date_end !ca desc order
+            20 0 limit
             [/component/mdx] !bf
             @eid
         ] select`;

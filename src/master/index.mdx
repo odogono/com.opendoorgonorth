@@ -8,6 +8,7 @@ import '../styles/main';
 
 import { e } from '@site';
 import Menu from '/components/menu';
+import OdgnHeader from '/components/odgn_header';
 
 <html lang="en">
 <head>
@@ -37,12 +38,15 @@ import Menu from '/components/menu';
 </head>
 
 <body>
-  <div id="layout-primary">
-            <Menu />
-            <div className="header"># Open Door Go North</div>
-            <div className="content">
-                {children}
-            </div>
-        </div>
+  
+    <header>
+      <OdgnHeader />
+      <Menu />
+    </header>
+
+    <main>{children}</main>
+    
+    <footer></footer>
+  
 </body>
 </html>
