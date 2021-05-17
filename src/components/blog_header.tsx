@@ -1,11 +1,11 @@
 import { formatDate, resolveUrl } from '@site';
 import { Entity } from '@ecset';
 
-export interface BlogHeadingProps {
+export interface BlogHeaderProps {
     e: Entity;
 }
 
-export default function Heading({ e }: BlogHeadingProps) {
+export default function BlogHeader({ e }: BlogHeaderProps) {
     let date = e.Date ?? e.DateRange;
     let url = resolveUrl( e.id );
 
