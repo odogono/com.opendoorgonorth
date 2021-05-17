@@ -1,14 +1,17 @@
 ---
 status: active
 isRenderable: false
-comment: Front Page Layout
+comment: Blog Master Layout
 ---
 
-import '../styles/main';
+import '/styles/main';
 
 import { e, resolveCanonicalUrl } from '@site';
 import Menu from '/components/menu';
 import OdgnHeader from '/components/odgn_header';
+import BlogHeader from '/components/blog_header';
+import BlogFooter from '/components/blog_footer';
+
 
 <html lang="en">
 <head>
@@ -41,7 +44,11 @@ import OdgnHeader from '/components/odgn_header';
       <Menu e={e} />
     </header>
 
-    <main>{children}</main>
+    <main>
+        <BlogHeader e={e} />
+        {children}
+        <BlogFooter e={e} />
+    </main>
     
     <footer></footer>
   

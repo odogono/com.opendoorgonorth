@@ -15,7 +15,7 @@ export default () => {
     const [data, setData] = useState([]);
 
     useServerEffect( async () => {
-        let eids = await site.findByTags([ 'links' ] );
+        let eids = await site.findByTags([ 'odgn-links' ] );
 
         const q = `
         [

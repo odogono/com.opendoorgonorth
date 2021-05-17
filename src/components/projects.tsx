@@ -31,9 +31,6 @@ export default () => {
 
         let result = [];
         for( const e of ents ){
-            if( e === undefined || e.Title === undefined ){
-                log('e no title', e );
-            }
             
             result.push( <ProjectSummary
                 key={`ps${e.id}`}

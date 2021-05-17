@@ -12,6 +12,15 @@
     --link-bg-hover: rgba(170, 202, 251, 0.9);
     --code-font    : Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     --hr-color     : #555;
+    --article-gap  : 4rem;
+    --date-color   : #666;
+    --tag-color    : #555;
+}
+
+@media only screen and (min-width: 801px) {
+    :root {
+        --article-gap: 6rem;
+    }
 }
 
 [data-theme="dark"] {
@@ -24,6 +33,8 @@
     --link-bg-hover: rgba(170, 202, 251, 0.9);
 }
 
+
+
 $bg-col-1: #33455B;
 $col-2   : #AB4D45;
 
@@ -31,6 +42,9 @@ $col-2   : #AB4D45;
 
     list-style-type: none;
 
+    [aria-current]:not([aria-current="false"]) {
+        font-weight: bold;
+    }
 
     li {
         margin-bottom: 1em;
@@ -45,13 +59,27 @@ $col-2   : #AB4D45;
         }
 
         &:hover {
-            color: var(--link-hover);
+            color          : var(--link-hover);
+            text-decoration: underline;
         }
     }
 }
 
 
+h1 {
+    margin-block-start: 2rem;
+    margin-block-end  : 1rem;
+    font-weight       : 500;
+    font-size         : 1.5rem;
+}
 
+h2 {
+    display           : block;
+    font-size         : 1.25rem;
+    font-weight       : 400;
+    margin-block-start: 2rem;
+    margin-block-end  : 1rem;
+}
 
 hr {
     height          : 1px;
@@ -78,7 +106,7 @@ hr {
     display       : flex;
     flex-direction: row;
 
-    h1 {
+    .title {
         font-size  : 24px;
         font-weight: 400;
     }
@@ -102,9 +130,9 @@ body {
 
     display: grid;
 
-    justify-content   : start;
+    justify-content      : start;
     // align-items       : center;
-    margin     : 1rem;
+    margin               : 1rem;
 
 
     grid-template-rows   : 8rem auto;
@@ -115,8 +143,8 @@ body {
         "footer";
 
     @media only screen and (min-width: 801px) {
-        justify-content   : center;
-        align-items       : center;
+        justify-content      : center;
+        align-items          : center;
         grid-template-columns: 0.25fr 0.5fr 0.25fr;
         grid-template-areas  :
             "header header header"
@@ -124,100 +152,91 @@ body {
             "footer footer footer";
     }
 
-    header {
-        grid-area: header;
-        display  : flex;
-
-        flex-direction: column;
-        align-items   : flex-start;
-        justify-content: space-around;
-
-
-        @media only screen and (min-width: 801px) {
-            flex-direction : row;
-            align-items    : center;
-            justify-content: space-around;
-        }
-    }
-
-
-
-    .site-nav {
-        grid-area: header;
-    }
-
-    footer {
-        grid-area: footer;
-    }
-
-    main {
-        grid-area      : content;
-        justify-content: center;
-
-
-        h1 {
-            margin-bottom: 0.8em;
-            font-weight  : 500;
-        }
-
-        h2 {
-            display           : block;
-            font-size         : 1.25rem;
-            font-weight       : bold;
-            margin-block-start: 1em;
-            margin-block-end  : 1em;
-        }
-
-        ol,
-        ul {
-            display             : block;
-            margin-left         : 60px;
-            padding-inline-start: 40px;
-            margin-block-start  : 1em;
-            margin-block-end    : 1em;
-        }
-
-        i,
-        li,
-        p {
-            line-height: 24px;
-        }
-
-        ol {
-            list-style-type: decimal;
-        }
-
-        p {
-            margin-block-start: 1em;
-            margin-block-end  : 1em;
-        }
-
-        img {
-            max-width: 640px;
-        }
-
-        a {
-            color              : var(--link);
-            // background-color: var(--link-bg);
-            text-decoration    : underline;
-
-            &:visited {
-                //   color: $visit;
-            }
-
-            &:hover {
-                color              : var(--link-hover);
-                // background-color: var(--link-bg-hover);
-            }
-
-            &:active {
-                //   color: $active;
-            }
-        }
-    }
 
 
 }
+
+body>header {
+    grid-area: header;
+    display  : flex;
+
+    flex-direction : column;
+    align-items    : flex-start;
+    justify-content: space-around;
+
+
+    @media only screen and (min-width: 801px) {
+        flex-direction : row;
+        align-items    : center;
+        justify-content: space-around;
+    }
+}
+
+
+
+.site-nav {
+    grid-area: header;
+}
+
+body>footer {
+    grid-area: footer;
+}
+
+main {
+    grid-area      : content;
+    justify-content: center;
+
+
+
+
+    ol,
+    ul {
+        display             : block;
+        margin-left         : 60px;
+        padding-inline-start: 40px;
+        margin-block-start  : 1em;
+        margin-block-end    : 1em;
+    }
+
+    i,
+    li,
+    p {
+        line-height: 24px;
+    }
+
+    ol {
+        list-style-type: decimal;
+    }
+
+    p {
+        margin-block-start: 1em;
+        margin-block-end  : 1em;
+    }
+
+    img {
+        max-width: 640px;
+    }
+
+    a {
+        color              : var(--link);
+        // background-color: var(--link-bg);
+        text-decoration    : underline;
+
+        &:visited {
+            //   color: $visit;
+        }
+
+        &:hover {
+            color              : var(--link-hover);
+            // background-color: var(--link-bg-hover);
+        }
+
+        &:active {
+            //   color: $active;
+        }
+    }
+}
+
 
 
 .projects {
@@ -268,6 +287,20 @@ body {
 article {
     position: relative;
 
+    margin-bottom: var(--article-gap);
+
+    time {
+        font-size: 0.8rem;
+        color    : var(--date-color);
+    }
+}
+
+article.blog-summary {
+    margin-bottom: 1rem;
+}
+
+
+article.project {
     .link {
         position: absolute;
         width   : 100%;
@@ -275,5 +308,26 @@ article {
         top     : 0;
         left    : 0;
         z-index : 1;
+    }
+}
+
+header>a {
+    text-decoration: none;
+
+    &:hover {
+        color          : var(--link-hover);
+        text-decoration: underline;
+    }
+}
+
+ul.tags {
+    list-style-type: none;
+    margin         : 0;
+    font-size      : 0.85rem;
+    text-transform : capitalize;
+    color          : var(--tag-color);
+
+    li {
+        display: inline;
     }
 }

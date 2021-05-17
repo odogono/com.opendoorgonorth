@@ -11,6 +11,6 @@ export default function OdgnHeader({ e }) {
             <rect width="128" height="128" fill="#222" />
         </svg>
         
-        <h1>Open Door Go North</h1>
+        <div className="title">Open Door Go North</div>
     </div>
 }
