@@ -9,6 +9,7 @@ import '/styles/main';
 import { e, resolveCanonicalUrl } from '@site';
 import Menu from '/components/menu';
 import OdgnHeader from '/components/odgn_header';
+import OdgnFooter from '/components/odgn_footer';
 import BlogHeader from '/components/blog_header';
 import BlogFooter from '/components/blog_footer';
 
@@ -50,7 +51,7 @@ import BlogFooter from '/components/blog_footer';
         <BlogFooter e={e} />
     </main>
     
-    <footer></footer>
+    <OdgnFooter {...props} e={e} />
   
 </body>
 </html>

@@ -17,7 +17,7 @@ export default function TagList({ tags, excludeSlugs }: TagListProps) {
 }
 
 function TagItem({ title, slug, isLast }) {
-    return <li key={`tag-${slug}`}>
+    return <li key={`tag-${slug}`} data-slug={slug}>
         <span className="link">{title}</span>
         {isLast ? <span className="sep" aria-hidden="true">,</span> : null}
     </li>
@@ -30,6 +30,6 @@ function parseEntity(e: Entity, excludeSlugs: string[] = []) {
 
     let title = e.Title?.title;
     let slug = e.Tag?.slug;
-    return excludeSlugs !== undefined && excludeSlugs.indexOf(slug) === -1 ?
+    return (excludeSlugs !== undefined && excludeSlugs.indexOf(slug) === -1) ?
         { title, slug } : undefined;
 }

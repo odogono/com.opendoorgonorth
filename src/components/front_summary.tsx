@@ -7,6 +7,8 @@ import { useState } from 'react';
 
 import BlogHeader from '/components/blog_header';
 import TagList from '/components/tag_list';
+import LinkArticle from '/components/article_link';
+
 
 export default function FrontSummary() {
 
@@ -33,13 +35,13 @@ export default function FrontSummary() {
             '/component/date'
         ];
         const ents = await processEntities(eids, dids, { applyLayout: false });
-        
+
         let result = [];
 
         for (const e of ents) {
 
             let url = e.Url?.url;
-            
+
             let tags = await site.getTagsByEntityId(e.id);
 
             let props = {
@@ -76,19 +78,6 @@ function BlogArticle({ e, eid, title, date, content, tags }) {
         {inner}
         <footer>
             <TagList tags={tags} excludeSlugs={['odgn-blog']} />
-        </footer>
-    </article>
-}
-
-function LinkArticle({ eid, title, date, summary, href, tags }) {
-    return <article data-eid={eid} className="link">
-        <header>
-            <div>{formatDate(date, 'DayMonthYear')}</div>
-            <a href={href}><h2>{title}</h2></a>
-        </header>
-        <p>{summary}</p>
-        <footer>
-            <TagList tags={tags} excludeSlugs={['odgn-link']} />
         </footer>
     </article>
 }

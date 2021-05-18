@@ -4,11 +4,12 @@ isRenderable: false
 comment: Front Page Layout
 ---
 
-import '../styles/main';
+import '/styles/main';
 
 import { e, resolveCanonicalUrl } from '@site';
 import Menu from '/components/menu';
 import OdgnHeader from '/components/odgn_header';
+import OdgnFooter from '/components/odgn_footer';
 
 <html lang="en">
 <head>
@@ -43,7 +44,7 @@ import OdgnHeader from '/components/odgn_header';
 
     <main>{children}</main>
     
-    <footer></footer>
+    <OdgnFooter {...props} e={e} />
   
 </body>
 </html>

@@ -2,7 +2,7 @@ import {
     site, log, formatDate, useServerEffect, resolveUrl, processEntities, runQuery
 } from '@site';
 import { useState } from 'react';
-
+import TagList from '/components/tag_list';
 
 export default () => {
 
@@ -12,7 +12,7 @@ export default () => {
 
     useServerEffect( async () => {
         // select eids which are tagged project
-        let eids = await site.findByTags([ 'project'] );
+        let eids = await site.findByTags([ 'odgn-project'] );
         const q = `
         [
             $eids
@@ -31,27 +31,33 @@ export default () => {
 
         let result = [];
         for( const e of ents ){
+
+            let tags = await site.getTagsByEntityId(e.id);
             
             result.push( <ProjectSummary
                 key={`ps${e.id}`}
                 title={e.Title?.title} 
                 date={e.DateRange} 
                 summary={e.Title?.summary}
-                href={resolveUrl(e.id)} /> );
+                href={resolveUrl(e.id)}
+                tags={tags} /> );
         }
         
         setData( result );
     });
 
-    return <div className="projects">{data}</div>;
+    return <section className="projects">{data}</section>;
 }
 
 
-function ProjectSummary({title, date, summary, href}){
-    return <div className="project">
+function ProjectSummary({title, date, summary, href, tags}){
+    return <article className="project-summary">
         <h2>{title}</h2>
-        <p>{summary}</p>
         <div>{formatDate(date)}</div>
-        <a href={href}><span className="link"></span></a>
-    </div>
+        <p>{summary}</p>
+        <footer>
+            <TagList tags={tags} excludeSlugs={['odgn-project']} />
+        </footer>
+        <a href={href}><span className="article-link"></span></a>
+    </article>
 }

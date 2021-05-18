@@ -1,7 +1,13 @@
 import { resolveUrl } from '@site';
+import { Entity } from '@ecset';
 
 
-export default function SiteNav({ e }) {
+export interface SiteNavProps {
+    e: Entity;
+}
+
+
+export default function SiteNav({ e }:SiteNavProps) {
 
     let pageUrl = resolveUrl(e.id);
 

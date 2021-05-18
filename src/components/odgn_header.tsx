@@ -1,7 +1,8 @@
-import { formatDate } from '@site';
+import { resolveUrl } from '@site';
 
+export default function OdgnHeader() {
 
-export default function OdgnHeader({ e }) {
+    let href = resolveUrl('/index');
 
     return <div className="odgn-header">
         <svg viewBox="0 0 128 128" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
@@ -12,5 +13,6 @@ export default function OdgnHeader({ e }) {
         </svg>
         
         <div className="title">Open Door Go North</div>
+        <a href={href}><span className="article-link"></span></a>
     </div>
 }

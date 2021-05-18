@@ -9,8 +9,9 @@ import '/styles/main';
 import { e, resolveCanonicalUrl } from '@site';
 import Menu from '/components/menu';
 import OdgnHeader from '/components/odgn_header';
-import BlogHeader from '/components/blog_header';
-import BlogFooter from '/components/blog_footer';
+import OdgnFooter from '/components/odgn_footer';
+import ProjectHeader from '/components/project_header';
+import ProjectFooter from '/components/project_footer';
 
 
 <html lang="en">
@@ -45,12 +46,14 @@ import BlogFooter from '/components/blog_footer';
     </header>
 
     <main>
-        <BlogHeader e={e} />
-        {children}
-        <BlogFooter e={e} />
+        <article className="project">
+          <ProjectHeader e={e} />
+          {children}
+          <ProjectFooter e={e} />
+        </article>
     </main>
     
-    <footer></footer>
-  
+    <OdgnFooter {...props} e={e} />
+    
 </body>
 </html>
