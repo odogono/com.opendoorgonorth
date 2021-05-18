@@ -33,7 +33,7 @@ function depToElement( es:EntitySet, src:Entity, dep:Entity ){
     let label = dep.Meta?.meta.label ?? '';
 
     return <div key={dep.id} className="dep">
-        <div className="type">{type}</div>
+        <div className="type"><a href={`/_e/${eid}`}>{type}</a></div>
         <div>→</div>
         <div className="e"><a href={`/_e/${dst}`}>{dst}</a></div>
         <div className="url">{label}</div>
