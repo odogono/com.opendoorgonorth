@@ -5,6 +5,7 @@
   "scripts": {
     "build": "odgn-ssg-build ./site.yaml",
     "serve": "odgn-ssg-serve ./site.yaml",
+    "clean": "odgn-ssg-clean ./site.yaml",
     "test-serve": "nodemon --watch src --ext js,ts,tsx --exec odgn-ssg-serve ./site.yaml"
   },
   "repository": {

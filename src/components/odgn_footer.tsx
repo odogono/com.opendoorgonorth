@@ -1,4 +1,4 @@
-import { formatDate, resolveUrl } from '@site';
+import { site, formatDate, resolveUrl } from '@site';
 import { Entity } from '@ecset';
 
 import EntitySummary from '/components/entity_summary';
@@ -9,6 +9,10 @@ export interface OdgnFooterProps {
 }
 
 export default function OdgnFooter({e, ...props}){
+
+    let mtime = site.getEntity()?.Times?.mtime;
+    let buildTime = formatDate( mtime, 'DayMonthYearTime');
+    
     return <footer className="odgn-footer">
         <div className="footer-nav">
             <nav>
@@ -48,7 +52,9 @@ export default function OdgnFooter({e, ...props}){
                 <EntityDependencies {...props} e={e} dir="<" />
             </nav>
         </div>
-        
-        <div>Copyright © 2021 Alexander Veenendaal</div>
+        <div className="footer-nav">
+            <div>Copyright © 2021 Alexander Veenendaal</div>
+            <div>Built at {buildTime}</div>
+        </div>
     </footer>
 }
