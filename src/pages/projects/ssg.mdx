@@ -2,42 +2,26 @@
 title: Grosmont
 summary:  A static site generator built on an Entity Component System.
 date: ['2021-01-01', '9999']
-tags: [ 'node.js', 'ecset' ]
+tags: [ 'node.js', EcSet, MDX, React ]
 ---
 
+import AppImage from '/components/img_open';
 
-Static site generators are currently the in-thing amongst the hackerati. The principle 
-is being that you generate plain, largely javascript-free, web pages using some kind of 
-build process ready to be placed directly on a web server.
-Aside from wanting to be trendy, and badly needing a site where I could bare my soul to 
-the world, I wanted to further stress and develop my library EcSet. So discarding the 
-quick and easy option of using one of the many fine pre-existing generators, I began 
-work on my own.
+Grosmont is a Static Site Generator. It was created with the goals of building this site
+and to further explore Entity Component Systems using my library EcSet.
 
-To summarise what EcSet actually does; it is an Entity Component framework - it provides 
-a way of structuring, storing, and operating on data. Entities are collections of Components. 
-Components are where the data lives. Processors perform operations on Entities and their 
-Components.
-
-In practice, this has resulted in a very modular, clean solution, that forced me to think 
-clearly about how the data is structured. The processors are largely atomic in their operation - 
-they work on defined sets of entities, which means they can be added, removed, and changed 
-without breaking the system as a whole. The order in which they called is still important 
-however, so there is still some dependency. This is something I am particularly pleased with, a
-nd has justified the upfront design.
-
-In terms of what it can build, the main input type is MDX. This format can largely be 
+The main content source type is MDX. This format can largely be 
 thought of as Markdown, but with the ability to use JSX. Its a good trade mix of minimal 
 text only markup which lets you focus on the content, with the extra power of being able 
 to include React components as needed.
+
 The SSG can of course also cope with plain JSX, which is either imported as a component 
 into other MDX or JSX, or as a standalone file to be rendered into a page.
 
-Stylesheet files with the `.sass` extension are compiled into css. From there, they can 
-either be written to a destination, or imported and then written out as part of MDX/JSX 
-files.
+Stylesheets can be provided as plain `.css` files, or compiled SASS. From there, they can 
+either be written to a destination, or imported by pages and inlined.
 
-Other formats, such as images or html, are treated as static files, and they are written 
+Other formats, such as images or HTML, are treated as static files and are written 
 as is to the destination.
 
 The system supports incremental builds based on file timestamps. It also uses dependencies 
@@ -48,3 +32,38 @@ The generator is invoked from the command line, taking a configuration file as a
 It can also be run as a server, which is useful during development and also adds some debug 
 information.
 
+## Data structures
+
+Grosmont employs my Entity Component System [EcSet](./ecset) for its data. Each page produced
+is an Entity, made up of a collection of Components each of which hold data about a particular
+aspect.
+
+<div className="app-screens">
+    <AppImage className="app-screen" src="/media/ssg" alt="Entity Map" />
+</div>
+
+
+A pipeline of processors takes the Entities and applies transformations to them. Certain
+processors transform from one form to another (for example MDX to JS), extract information
+(tags or dates), or write to the filesystem.
+
+## What I learned
+
+This project is my most recent application of my [EcSet](./ecset) library. Most of the time
+spent has been on expanding and proving the libraries capabilities. 
+
+The nature of Entities and Components forced me to think carefully about how the data
+is best structured to serve the various requirements. 
+
+Processors work on a specific
+signature of Components, and so this means they are very modular and are very easy
+to swap in since they have few code dependencies. The order in which they are called
+is still important, but failure doesn't break the system as a whole.
+
+While I have used React extensively on the client side, this has been the first server
+React development I have done. Largely it has been straightforward. The use of asynchronous
+hooks was one thing that was not built-in and I had to engineer a way of dealing with them.
+
+Grosmont is something that I hope will continue to evolve with Opendoorgonorth. 
+It hasn't been a goal to 'productise' it as such. If anything it is a case study for 
+[EcSet](./ecset).

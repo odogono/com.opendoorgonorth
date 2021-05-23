@@ -86,8 +86,8 @@ h2 {
 hr {
     height          : 1px;
     border          : none;
-    color           : --hr-color;
-    background-color: --hr-color;
+    color           : var(--hr-color);
+    background-color: var(--hr-color);
     width           : 60%;
     text-align      : center;
     margin          : 0 auto;
@@ -355,6 +355,7 @@ article.project-summary {
     display       : grid;
     grid-gap      : 50px;
     grid-auto-flow: row;
+    margin-top    : 4rem;
 
     grid-template-columns: none;
 
@@ -377,31 +378,33 @@ article.project {
 
     ul.tags {
         font-size: 1rem;
-        display: inline;
+        display  : inline;
     }
 
     header {
         margin-bottom: 3rem;
+
         strong {
             margin-right: 0.4rem;
         }
     }
+
     // header+p {
     //     margin-bottom: 3rem;
     // }
 
     // zentrack project page
     .app-screens {
-        display: flex;
+        display        : flex;
         justify-content: space-evenly;
-        align-items: center;
+        align-items    : center;
     }
 
     .app-screen {
         // width: 8rem;
         max-height: 12rem;
-        margin: 0.5rem;
-        border: 1px solid black;
+        margin    : 0.5rem;
+        border    : 1px solid black;
     }
 }
 
