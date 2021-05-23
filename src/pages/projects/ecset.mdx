@@ -2,7 +2,7 @@
 title: EcSet
 summary: entity component system
 date: ['2012', '9999']
-tags: [ "ecset", 'node.js' ]
+tags: [ 'node.js' ]
 ---
 
 
@@ -14,10 +14,10 @@ It was originally extracted from a game I was developing at the time, and evolve
 standalone library which I have continued to work and experiment with over several years.
 
 The primary implementation has been javascript, or more recently Typescript. An Elixir 
-implementation is lagging behind.
+implementation is part way in development.
 
 Ecset has been used in production on some of my past projects, and is currently employed 
-heavily in my Static Site Generator Grosmont.
+heavily in my Static Site Generator [Grosmont]('./ssg').
 
 Like most ECS implementations, it works on basic principles:
 
@@ -38,53 +38,15 @@ to relational databases, so the Sqlite variant has been used the most.
 
 An important aspect of ECS is the ability to match entities with Processors. As an example, 
 a processor which updates entities in a coordinate space would be interested in Position 
-and Velocity components only. 
+and Velocity components only.
 
-Initially, I began with using bitfields to match entities, wrapped around a simple DSL:
+To meet this requirement, I developed a language named Filth, largely based on 
+[Forth](https://en.wikipedia.org/wiki/Forth_(programming_language)). As well as being able
+to match Entities, it has simple capabilities to manipulate data.
+Because of the way the language works, it is very easy to limit operations to be read-only.
+This makes it suitable to be used from a client in much the same way GraphQL is.
 
-```
-Q.all('/component/channel_member')
-```
-
-Over time, this expanded to include selection based on component properties
-
-```
-Q.all('/component/channel_member').where(Q.attr('client').equals(clientID))
-```
-
-
-Until eventually, as these things tend to do, it evolved into a language based on Forth 
-that I named Filth:
-
-```
-$es [
-  /component/channel_member#/channel !ca $channel_ids ==
-  /component/channel_member !bf
-  @c
-] select
-
-// select client attr, and make sure there are no duplicates
-/client pluck unique 
-                
-// make sure this list of clients doesnt include the client_id
-[ $client_id != ] filter
-```
-
-This allows a lot of flexibility in creating queries that can capture the components 
-needed for processing. In some ways this makes Ecset comparable to GraphQL. A goal was 
-to allow clients, say a browser, to fetch data from a server in a concise language independent manner.
-
-ECS has typically been employed in domains such as games, where factors such as cache 
-locality and low level optimisation are important. My aim with this project has been to 
+Historically, the ECS pattern has typically been employed in domains such as games, where factors 
+such as cache locality and low level optimisation are important. My aim with this project has been to 
 explore how such a pattern can be employed in other scenarios.
 
-
-
-
-
-
-At certain times, development on EcSet has been very ‘bottom up’. Adding features can 
-be very compulsive without a clear requirement. I have probably removed more code than 
-now exists. What is saving this project is working on projects which utilise it. My rule 
-of thumb with an API is that there should be at least 3 working implementations, preferably 
-different enough to stress it in the required ways.

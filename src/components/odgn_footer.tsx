@@ -26,6 +26,8 @@ export default function OdgnFooter({ e, ...props }) {
                 </ul>
             </nav>
             <nav>
+            </nav>
+            <nav>
                 <h2>External</h2>
                 <ul>
                     <li><a rel="me" href="mailto:mail@opendoorgonorth.com">mail@opendoorgonorth.com</a></li>
@@ -35,8 +37,7 @@ export default function OdgnFooter({ e, ...props }) {
                     <li><a rel="me" href="https://hex.pm/users/odogono">Hex</a></li>
                 </ul>
             </nav>
-            <nav>
-            </nav>
+            
         </div>
         <div className="footer-nav">
             <nav>
@@ -54,8 +55,7 @@ export default function OdgnFooter({ e, ...props }) {
         </div>
         <div className="footer-nav">
             <nav>
-                <div>Copyright © 2021 Alexander Veenendaal</div>
-                <div>Built at {buildTime}</div>
+                <div>Built at {buildTime}. Copyright © 2021 Alexander Veenendaal</div>
             </nav>
         </div>
         <script data-goatcounter="https://odgn.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
