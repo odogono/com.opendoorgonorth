@@ -52,20 +52,30 @@ export default () => {
         setData( result );
     });
 
-    return <article className="writing">{data}</article>;
+    return <article className="writing-list">{data}</article>;
 }
 
 
 function BlogSummary({title, date, summary, tags, href}){
 
-    return <article className="blog-summary">
-        <header>
-        <a href={href}><h2>{title}</h2></a>
-        <div>{formatDate(date, 1)}</div>
-        </header>
-        <main>{summary}</main>
-        <TagList tags={tags} excludeSlugs={['odgn-blog']} />
-    </article>
+    return <>
+        <article className="blog-summary">
+            <a href={href}><h2>{title}</h2></a>
+            <div className="summary">{summary}</div>
+            <TagList tags={tags} excludeSlugs={['odgn-blog']} />
+        </article>
+        <time>{formatDate(date, 'DayMonthYearShort')}</time>
+    </>
+
+
+    // return <article className="blog-summary">
+    //     <header>
+    //     <a href={href}><h2>{title}</h2></a>
+    //     <div>{formatDate(date, 1)}</div>
+    //     </header>
+    //     <main>{summary}</main>
+    //     <TagList tags={tags} excludeSlugs={['odgn-blog']} />
+    // </article>
 }
 
 

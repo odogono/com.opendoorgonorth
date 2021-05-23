@@ -12,39 +12,39 @@ import OdgnHeader from '/components/odgn_header';
 import OdgnFooter from '/components/odgn_footer';
 
 <html lang="en">
-<head>
-  <meta charSet="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charSet="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>{e.Title?.title}</title>
+    <title>{e.Title?.title}</title>
 
-  <CSSLinks />
+    <CSSLinks />
 
-  <meta name="description" content={e.Title?.summary} />
-  <meta property="og:site_name" content="Open Door Go North" />
-  <meta property="og:title" content={e.Title?.title} />
-  <meta property="og:description" content={e.Title?.summary} />
-  <meta property="og:locale" content="en_GB" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={resolveCanonicalUrl(e)} />
-  <link rel="canonical" href={resolveCanonicalUrl(e)} />
+    <meta name="description" content={e.Title?.summary} />
+    <meta property="og:site_name" content="Open Door Go North" />
+    <meta property="og:title" content={e.Title?.title} />
+    <meta property="og:description" content={e.Title?.summary} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={resolveCanonicalUrl(e)} />
+    <link rel="canonical" href={resolveCanonicalUrl(e)} />
 
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <meta name="theme-color" content="#FF00FF" />
-</head>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#FF00FF" />
+  </head>
 
-<body>
-  
-    <header>
-      <OdgnHeader />
-      <Menu e={e} />
-    </header>
-
-    <main>{children}</main>
+  <body>
     
-    <OdgnFooter {...props} e={e} />
-  
-</body>
+      <header>
+        <OdgnHeader />
+        <Menu e={e} />
+      </header>
+
+      <main>{children}</main>
+      
+      <OdgnFooter {...props} e={e} />
+    
+  </body>
 </html>

@@ -1,11 +1,9 @@
 import { resolveUrl } from '@site';
 import { Entity } from '@ecset';
 
-
 export interface SiteNavProps {
     e: Entity;
 }
-
 
 export default function SiteNav({ e }:SiteNavProps) {
 

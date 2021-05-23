@@ -165,7 +165,7 @@ body>header {
 .odgn-header {
     display       : flex;
     flex-direction: row;
-    position: relative;
+    position      : relative;
 
     .title {
         font-size  : 24px;
@@ -192,10 +192,11 @@ body>footer.debug {
     grid-area: debug;
 }
 
-main {
+body>main {
     grid-area      : content;
     justify-content: center;
     margin         : 1rem;
+    margin-bottom  : 6rem;
 
     ol,
     ul {
@@ -247,6 +248,10 @@ main {
     strong {
         font-weight: bold;
     }
+
+    em {
+        font-style: italic;
+    }
 }
 
 
@@ -274,8 +279,35 @@ article {
     }
 }
 
+article.writing-list {
+    display              : grid;
+    grid-template-columns: 1fr min-content;
+
+    h2 {
+        margin-top   : 0;
+        margin-bottom: 0.5rem
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+
+    time {
+        white-space: pre;
+        font-size  : 1.1rem;
+        text-align : right;
+    }
+}
+
 article.blog-summary {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+
+    .summary {
+        font-style   : italic;
+        color        : #888;
+        margin-bottom: 0.5rem;
+    }
 }
 
 
@@ -301,7 +333,7 @@ article.project-summary {
         white-space  : normal;
     }
 
-    
+
 
     ul.tags {
         font-size: 0.75rem;
@@ -345,10 +377,31 @@ article.project {
 
     ul.tags {
         font-size: 1rem;
+        display: inline;
     }
 
-    header+p {
+    header {
         margin-bottom: 3rem;
+        strong {
+            margin-right: 0.4rem;
+        }
+    }
+    // header+p {
+    //     margin-bottom: 3rem;
+    // }
+
+    // zentrack project page
+    .app-screens {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .app-screen {
+        // width: 8rem;
+        max-height: 12rem;
+        margin: 0.5rem;
+        border: 1px solid black;
     }
 }
 
@@ -365,13 +418,13 @@ header>a {
 
 .odgn-footer {
     .footer-nav {
-        display: flex;
+        display       : flex;
         flex-direction: column;
-        
-        margin : 2rem 1rem;
+
+        margin: 2rem 1rem;
 
         nav {
-            flex: 1;
+            flex     : 1;
             min-width: 18rem;
 
             h2 {
@@ -384,12 +437,12 @@ header>a {
         }
 
         ul {
-            list-style-type: none;
-            margin         : 0;
-            font-size      : 0.9rem;
-            text-transform : capitalize;
-            margin-block-start  : 1em;
-            margin-block-end    : 1em;
+            list-style-type   : none;
+            margin            : 0;
+            font-size         : 0.9rem;
+            text-transform    : none;
+            margin-block-start: 1em;
+            margin-block-end  : 1em;
 
             li {
                 margin: 0.25rem 0;
@@ -399,16 +452,16 @@ header>a {
                 color              : var(--link);
                 // background-color: var(--link-bg);
                 text-decoration    : underline;
-        
+
                 &:visited {
                     //   color: $visit;
                 }
-        
+
                 &:hover {
                     color              : var(--link-hover);
                     // background-color: var(--link-bg-hover);
                 }
-        
+
                 &:active {
                     //   color: $active;
                 }
@@ -418,7 +471,7 @@ header>a {
 
     @media only screen and (min-width: 801px) {
         .footer-nav {
-            margin : 2rem 20%;
+            margin        : 2rem 20%;
             flex-direction: row;
         }
     }
@@ -446,14 +499,16 @@ article.entity-summary {
         list-style-type: none;
         margin         : 0;
     }
-    
+
     ul li {
-        text-transform: lowercase;
+        text-transform  : lowercase;
         // border-bottom: 0.05rem solid #333;
-        line-height  : var(--entity-font-size);;
+        line-height     : var(--entity-font-size);
+        ;
         // padding      : 0.3rem;
         // padding-left : 2rem;
-        font-size    : var(--entity-font-size);;
+        font-size: var(--entity-font-size);
+        ;
     }
 
     ul li:last-child {
@@ -462,10 +517,17 @@ article.entity-summary {
 }
 
 article.entity-deps {
-    font-size: var(--entity-font-size);;
+    font-size: var(--entity-font-size);
+    ;
 
     td {
         padding      : 0.2rem;
         padding-right: 0.2rem;
     }
+}
+
+img.portrait {
+    float : right;
+    margin: 0 0 0 1rem;
+    width : 10rem;
 }

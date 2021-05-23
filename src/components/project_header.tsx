@@ -11,6 +11,8 @@ export interface BlogHeaderProps {
 export default function BlogHeader({ e }: BlogHeaderProps) {
     let date = e.Date ?? e.DateRange;
     let url = resolveUrl(e.id);
+    let client = e.Meta?.meta?.client;
+    let company = e.Meta?.meta?.company;
 
     const [tags, setTags] = useState([]);
 
@@ -23,7 +25,15 @@ export default function BlogHeader({ e }: BlogHeaderProps) {
         <a href={url}>
             <h1>{e?.Title?.title}</h1>
         </a>
-        <time dateTime={formatDate(date, 'Date')}>{formatDate(date)}</time>
-        <TagList tags={tags} excludeSlugs={['odgn-project']} />
+        {client && <div><strong>Client:</strong> {client}</div>}
+        {company && <div><strong>Company:</strong> {company}</div>}
+        <div>
+            <strong>Dates:</strong> 
+            <time dateTime={formatDate(date, 'Date')}>{formatDate(date)}</time>
+        </div>
+        <div>
+            <strong>Technologies:</strong> 
+            <TagList tags={tags} excludeSlugs={['odgn-project']} />
+        </div>
     </header>
 }

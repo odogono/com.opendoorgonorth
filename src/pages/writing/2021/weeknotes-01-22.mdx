@@ -1,0 +1,28 @@
+---
+title: Weeknotes 1
+summary: Static Fish Fingers
+date: '2021-01-22'
+tags: [ 'weeknotes' ]
+---
+
+
+Work on SSG mostly. A rethinking of how entities are formed from config
+
+Reconsidered the config language again. Toml still appears to be the sensible choice. But Yaml its and unquoted strings sure make things look nicer. Support Both!
+
+
+Running into the issue of tests distracting from the main goals of the project. What you need, especially early on, is the program running completely as quickly as possible - even if that functionality is the absolute minimum. A rapid push forward, and then a slight pull back while you secure and prove what you have written with tests. A lot like mountain climbing?
+Tests solidify and harden what is already there - but you have to have something to start with.
+That said, when it comes to APIs its tests first.
+
+And that is the difference between SSG and ECS - the former I have been writing and rewriting the basic app for a while - the latter started with tests, and I have continued to harden as further cases have been raised.
+
+The challenge with SSG is that the use of ECS has forced to think in terms of processors - in this way it is functional. Each processor works purely on the set of entities - entirely data driven. With some caching along the way. All state has to be read and written back into the ES. An example of this is indicating which files have changed. To achieve this an ephemeral component is added to entities at the start of the process. Each processor following uses the presence of this component to decide whether to process it. At the end of the run, the component is removed.
+
+I still haven’t settled on a name for ECS or SSG. Its true [what they say](http://www.tbray.org/ongoing/When/200x/2005/12/23/UPI)
+
+ECS - sqlite brought up to par
+
+
+Holy Fish Finger Bhorta
+

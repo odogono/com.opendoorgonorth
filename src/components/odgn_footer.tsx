@@ -8,21 +8,21 @@ export interface OdgnFooterProps {
     e: Entity;
 }
 
-export default function OdgnFooter({e, ...props}){
+export default function OdgnFooter({ e, ...props }) {
 
     let mtime = site.getEntity()?.Times?.mtime;
-    let buildTime = formatDate( mtime, 'DayMonthYearTime');
-    
+    let buildTime = formatDate(mtime, 'DayMonthYearTime');
+
     return <footer className="odgn-footer">
         <div className="footer-nav">
             <nav>
                 <h2>This Site</h2>
                 <ul>
-                <li><a href="/index">Home</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/writing">Writing</a></li>
-                <li><a href="/links">Links</a></li>
-                <li><a href="/about">About</a></li>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/writing">Writing</a></li>
+                    <li><a href="/links">Links</a></li>
+                    <li><a href="/about">About</a></li>
                 </ul>
             </nav>
             <nav>
@@ -53,8 +53,11 @@ export default function OdgnFooter({e, ...props}){
             </nav>
         </div>
         <div className="footer-nav">
-            <div>Copyright © 2021 Alexander Veenendaal</div>
-            <div>Built at {buildTime}</div>
+            <nav>
+                <div>Copyright © 2021 Alexander Veenendaal</div>
+                <div>Built at {buildTime}</div>
+            </nav>
         </div>
+        <script data-goatcounter="https://odgn.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     </footer>
 }

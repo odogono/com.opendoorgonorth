@@ -2,15 +2,10 @@
 title: Sky Sports Football Manager
 summary:  A massively multiplayer online football management sim
 date: ['1999', '2002']
-tags: [ game, mmpog, java ]
+tags: [  Java, MMPOG ]
+company: HotGen Studios Ltd, Croydon, UK
 ---
 
-
-**Client:** HotGen Studios Ltd, Croydon, UK
-
-![You'll never play alone](file:///media/ssfm.jpg)
-
-## What / Who / Goals
 
 SSFM was a massively multiplayer football management game. 
 Players could choose a club to manage in one of several ‘worlds’ competing against others to win the 
@@ -26,12 +21,7 @@ to choose a world to inhabit based on the availability of a team and the number 
 
 A companion web site supported the game with forums and the ability to view the state of worlds.
 
-SSFM was an evolution of the codebase and experience in multiplayer online games that had 
-begun with DOTN. 
-The architecture of the system was what would now be thought of as [Microservices](https://martinfowler.com/articles/microservices.html). 
-Distinct processes were used for the game engine, authentication, and load balancing. 
-These were tied together using the Meta-game service which would ‘orchestrate’ the game engine 
-processes and work with the database.
+![You'll never play alone](file:///media/ssfm)
 
 
 ## My Role
@@ -46,10 +36,19 @@ then in the lead-up to launch with the deployment and management.
 ## Tech Stack
 
 The technology evolved from the previous [DOTN]('./dotn') project, which was Java based, 
-albeit a single running executable. Because certain parts were written in different languages, 
-this led to using a Microservices based approach. This also had the benefit of being able to scale 
+albeit a single running executable. 
+
+Because certain parts were written in different languages, 
+this led to employing what would now be considered a 
+[Microservices](https://martinfowler.com/articles/microservices.html) based approach. 
+Distinct processes were used for the game engine, authentication, and load balancing. 
+These were tied together using the Meta-game service which would ‘orchestrate’ the game engine 
+processes and work with the database.
+
+A benefit of this approach was being able to scale easily
 across multiple servers. The system in production used 4 servers - one for database (SQL Server), 
 two for game servers, and one for the website.
+
 
 The game engine was licensed from a 3rd party and was C++ based. Around this the team developed a 
 wrapper which would allow network communication.
