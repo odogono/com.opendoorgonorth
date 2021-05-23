@@ -21,7 +21,7 @@ export default () => {
         [
             $eids
             /component/date#/date !ca desc order
-            10 0 limit
+            30 0 limit
             /component/title !bf
             @e
         ] select`;

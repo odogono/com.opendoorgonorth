@@ -26,8 +26,6 @@ export default function OdgnFooter({ e, ...props }) {
                 </ul>
             </nav>
             <nav>
-            </nav>
-            <nav>
                 <h2>External</h2>
                 <ul>
                     <li><a rel="me" href="mailto:mail@opendoorgonorth.com">mail@opendoorgonorth.com</a></li>
@@ -37,7 +35,8 @@ export default function OdgnFooter({ e, ...props }) {
                     <li><a rel="me" href="https://hex.pm/users/odogono">Hex</a></li>
                 </ul>
             </nav>
-            
+            <nav>
+            </nav>
         </div>
         <div className="footer-nav">
             <nav>
